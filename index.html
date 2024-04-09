@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário Dinâmico para PDF</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Formulário para Geração de PDF</h2>
+    <form id="formPdf">
+
+        <!-- Painel Empresa -->
+        <div class="card mb-3">
+            <div class="card-header">Empresa</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="empresaNome">Nome da Empresa</label>
+                    <input type="text" class="form-control" id="empresaNome" value="JAPAN MOTOS-MATRIZ">
+                </div>
+                <div class="form-group">
+                    <label for="empresaCnpj">CNPJ</label>
+                    <input type="text" class="form-control" id="empresaCnpj" value="09.199.439/0001-60">
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Moto -->
+        <div class="card mb-3">
+            <div class="card-header">Moto</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="motoModelo">Modelo da Moto</label>
+                    <input type="text" class="form-control" id="motoModelo" placeholder="Modelo da Moto">
+                </div>
+                <div class="form-group">
+                    <label for="motoChassi">Chassi</label>
+                    <input type="text" class="form-control" id="motoChassi" placeholder="Chassi da Moto">
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Responsável -->
+        <div class="card mb-3">
+            <div class="card-header">Responsável</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="responsavelNome">Nome</label>
+                    <input type="text" class="form-control" id="responsavelNome" placeholder="Nome do Responsável">
+                </div>
+                <div class="form-group">
+                    <label for="responsavelCpf">CPF</label>
+                    <input type="text" class="form-control" id="responsavelCpf" placeholder="CPF do Responsável">
+                </div>
+                <div class="form-group">
+                    <label for="responsavelCpf">RG</label>
+                    <input type="text" class="form-control" id="responsavelRg" placeholder="RG do Responsável">
+                </div>
+                <div class="form-group">
+                    <label for="responsavelCpf">Endereço</label>
+                    <input type="text" class="form-control" id="responsavelEndereco" placeholder="Endereço do Responsável">
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Recebedor -->
+        <div class="card mb-3">
+            <div class="card-header">Recebedor</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="recebedorNome">Nome</label>
+                    <input type="text" class="form-control" id="recebedorNome" placeholder="Nome do Recebedor">
+                </div>
+                <div class="form-group">
+                    <label for="recebedorCpf">CPF</label>
+                    <input type="text" class="form-control" id="recebedorCpf" placeholder="CPF do Recebedor">
+                </div>
+                <div class="form-group">
+                    <label for="recebedorCpf">RG</label>
+                    <input type="text" class="form-control" id="recebedorRg" placeholder="RG do Recebedor">
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão para gerar PDF -->
+        <button type="button" class="btn btn-primary" id="gerar-pdf">Gerar PDF</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('gerar-pdf').addEventListener('click', () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Aqui você pegaria os valores dos inputs para preencher no PDF
+    const empresaNome = document.getElementById('empresaNome').value;
+    const empresaCnpj = document.getElementById('empresaCnpj').value;
+    const motoModelo = document.getElementById('motoModelo').value;
+    const motoChassi = document.getElementById('motoChassi').value;
+    const responsavelNome = document.getElementById('responsavelNome').value;
+    const responsavelCpf = document.getElementById('responsavelCpf').value;
+    const recebedorNome = document.getElementById('recebedorNome').value;
+    const recebedorCpf = document.getElementById('recebedorCpf').value;
+    const responsavelRg = document.getElementById('responsavelRg').value;
+    const responsavelEndereco = document.getElementById('responsavelEndereco').value;
+    const recebedorRg = document.getElementById('recebedorRg').value;
+    
+    // JAPAN MOTOS-MATRIZ - Título
+    doc.setFontSize(30); // Tamanho grande
+    doc.setFont(undefined, 'bold'); // Negrito
+    doc.text(empresaNome, 105, 40, null, null, 'center'); // Centralizado
+
+    // CNPJ - Subtítulo
+    doc.setFontSize(15); // Tamanho menor que o título
+    doc.setFont(undefined, 'normal'); // Removendo o negrito
+    doc.text(`Cnpj: ${empresaCnpj}`, 105, 50, null, null, 'center'); // Centralizado
+
+    // AUTORIZAÇÃO PARA RECEBIMENTO DE VEICULO - Seção
+    doc.setFontSize(14); // Tamanho
+    doc.setFont(undefined, 'bold'); // Negrito
+    doc.text('AUTORIZAÇÃO PARA RECEBIMENTO DE VEICULO', 105, 70, null, null, 'center'); // Centralizado
+
+    // Resetando o estilo para o corpo do texto
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'normal');
+
+    // Texto principal - Justificado
+    // OBS: jsPDF não suporta justificação direta. Você teria que implementar uma função personalizada para quebrar e alinhar o texto.
+    const textoCorpo = `Eu, ${responsavelNome}, CPF: ${responsavelCpf} e RG:${responsavelRg}, ${responsavelEndereco}, abaixo assinado na qualidade de proprietário da Motocicleta ${motoModelo}, CHASSI: ${motoChassi}. Por meio desta e para os devidos fins de direito autorizar ${recebedorNome}, CPF: ${recebedorCpf} e RG:${recebedorRg} a Receber junto a JAPAN MOTOS LTDA, a Motocicleta acima descriminada.`;
+    doc.text(textoCorpo, 10, 80, { maxWidth: 190, align: 'justify' });
+
+    const agora = new Date();
+    const dia = agora.getDate(); // Já é uma string no formato desejado
+    const ano = agora.getFullYear();
+
+    // Função para converter o número do mês no nome por extenso
+    function nomeDoMes(mes) {
+        const meses = [
+            "JANEIRO", "FEVEREIRO", "MARÇO",
+            "ABRIL", "MAIO", "JUNHO",
+            "JULHO", "AGOSTO", "SETEMBRO",
+            "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
+        ];
+        return meses[mes];
+    }
+
+const mes = nomeDoMes(agora.getMonth()); // Janeiro é 0, por isso não precisa adicionar 1 aqui
+
+// Formatando a data no estilo desejado
+const dataFormatada = `TERESINA ${dia} DE ${mes} DE ${ano}`;
+
+// Agora você usa a dataFormatada ao invés de
+
+
+    // Data
+    doc.text(dataFormatada, 105, 140, null, null, 'center'); // Centralizado
+    doc.text('Pelo que firmo a presente:', 105, 145, null, null, 'center'); // Centralizado
+
+    // Assinaturas - Para simplificar, apenas centralizei os nomes, mas você pode querer adicionar linhas para assinatura ou outros elementos.
+    doc.text('___________________________________________________', 105, 170, null, null, 'center'); // Centralizado
+    doc.text(responsavelNome, 105, 180, null, null, 'center'); // Centralizado
+    doc.text(`CPF: ${responsavelCpf} RG: ${responsavelRg}`, 105, 185, null, null, 'center'); // Centralizado
+
+    doc.text('___________________________________________________', 105, 200, null, null, 'center'); // Centralizado
+    doc.text(recebedorNome, 105, 210, null, null, 'center'); // Centralizado
+    doc.text(`CPF: ${recebedorCpf} RG: ${recebedorRg}`, 105, 215, null, null, 'center'); // Centralizado
+
+    let primeiroNome = responsavelNome.split(" ")[0];
+    let nomeArquivo = primeiroNome.toLowerCase() + "_autorizacao_recebimento_veiculo.pdf";
+
+    doc.save(nomeArquivo);
+});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
