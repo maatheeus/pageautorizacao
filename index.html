@@ -9,92 +9,273 @@
 <body>
 
 <div class="container mt-5">
-    <h2>Formulário para Geração de PDF</h2>
-    <form id="formPdf">
+    <div class="mb-5">
+        <div class="d-flex align-items-center">
+            <h2>Modelos PDF</h2>
+            <button onclick="recuperarUltimoFeito()" class="btn btn-success ml-auto">Recuperar Ultimo Feito</button>
+        </div>
+    </div>
+</br>
+</br>
 
-        <!-- Painel Empresa -->
-        <div class="card mb-3">
-            <div class="card-header">Empresa</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="empresaNome">Nome da Empresa</label>
-                    <input type="text" class="form-control" id="empresaNome" value="JAPAN MOTOS-MATRIZ">
-                </div>
-                <div class="form-group">
-                    <label for="empresaCnpj">CNPJ</label>
-                    <input type="text" class="form-control" id="empresaCnpj" value="09.199.439/0001-60">
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#declaracao">Declaração</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#comprovantePix">Declaração Pix</a>
+
+     
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane" id="comprovantePix">
+        <form id="formPdf">
+            <div class="card mb-3">
+                <div class="card-header">Empresa</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="empresaNome">Nome da Empresa</label>
+                        <input type="text" class="form-control" id="empresaNomePix" value="JAPAN MOTOS-MATRIZ">
+                    </div>
+                    <div class="form-group">
+                        <label for="empresaCnpj">CNPJ</label>
+                        <input type="text" class="form-control" id="empresaCnpjPix" value="09.199.439/0001-60">
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Painel Moto -->
-        <div class="card mb-3">
-            <div class="card-header">Moto</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="motoModelo">Modelo da Moto</label>
-                    <input type="text" class="form-control" id="motoModelo" placeholder="Modelo da Moto">
-                </div>
-                <div class="form-group">
-                    <label for="motoChassi">Chassi</label>
-                    <input type="text" class="form-control" id="motoChassi" placeholder="Chassi da Moto">
-                </div>
-            </div>
-        </div>
-
-        <!-- Painel Responsável -->
-        <div class="card mb-3">
-            <div class="card-header">Responsável</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="responsavelNome">Nome</label>
-                    <input type="text" class="form-control" id="responsavelNome" placeholder="Nome do Responsável">
-                </div>
-                <div class="form-group">
-                    <label for="responsavelCpf">CPF</label>
-                    <input type="text" class="form-control" id="responsavelCpf" placeholder="CPF do Responsável">
-                </div>
-                <div class="form-group">
-                    <label for="responsavelCpf">RG</label>
-                    <input type="text" class="form-control" id="responsavelRg" placeholder="RG do Responsável">
-                </div>
-                <div class="form-group">
-                    <label for="responsavelCpf">Endereço</label>
-                    <input type="text" class="form-control" id="responsavelEndereco" placeholder="Endereço do Responsável">
+    
+            <!-- Painel Moto -->
+            <div class="card mb-3">
+                <div class="card-header">Moto</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="motoModelo">Modelo da Moto</label>
+                        <input type="text" class="form-control" id="motoModeloPix" placeholder="Modelo da Moto">
+                    </div>
+                    <div class="form-group">
+                        <label for="motoChassi">Chassi</label>
+                        <input type="text" class="form-control" id="motoChassiPix" placeholder="Chassi da Moto">
+                    </div>
+                    <div class="form-group">
+                        <label for="motoChassi">Valor</label>
+                        <input type="text" class="form-control" class="money2" id="valorMotoPix" placeholder="Chassi da Moto">
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Painel Recebedor -->
-        <div class="card mb-3">
-            <div class="card-header">Recebedor</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="recebedorNome">Nome</label>
-                    <input type="text" class="form-control" id="recebedorNome" placeholder="Nome do Recebedor">
-                </div>
-                <div class="form-group">
-                    <label for="recebedorCpf">CPF</label>
-                    <input type="text" class="form-control" id="recebedorCpf" placeholder="CPF do Recebedor">
-                </div>
-                <div class="form-group">
-                    <label for="recebedorCpf">RG</label>
-                    <input type="text" class="form-control" id="recebedorRg" placeholder="RG do Recebedor">
+    
+            <!-- Painel Responsável -->
+            <div class="card mb-3">
+                <div class="card-header">Responsável</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="responsavelNome">Nome</label>
+                        <input type="text" class="form-control" id="responsavelNomePix" placeholder="Nome do Responsável">
+                    </div>
+                    <div class="form-group">
+                        <label for="responsavelCpf">CPF</label>
+                        <input type="text" class="form-control" id="responsavelCpfPix" placeholder="CPF do Responsável">
+                    </div>
+                    <div class="form-group">
+                        <label for="responsavelCpf">RG</label>
+                        <input type="text" class="form-control" id="responsavelRgPix" placeholder="RG do Responsável">
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Botão para gerar PDF -->
-        <button type="button" class="btn btn-primary" id="gerar-pdf">Gerar PDF</button>
-    </form>
+    
+            <!-- Painel Recebedor -->
+            <div class="card mb-3">
+                <div class="card-header">Recebedor</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="recebedorNome">Nome</label>
+                        <input type="text" class="form-control" id="recebedorNomePix" placeholder="Nome do Recebedor">
+                    </div>
+                    <div class="form-group">
+                        <label for="recebedorCpf">CPF</label>
+                        <input type="text" class="form-control" id="recebedorCpfPix" placeholder="CPF do Recebedor">
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Botão para gerar PDF -->
+            <button type="button" class="btn btn-primary" id="comprovante-pix">Gerar PDF</button>
+        </form>
+      </div>
+    <div class="tab-pane active" id="declaracao">
+        <form id="formPdf">
+            <div class="card mb-3">
+                <div class="card-header">Empresa</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="empresaNome">Nome da Empresa</label>
+                        <input type="text" class="form-control" id="empresaNome" value="JAPAN MOTOS-MATRIZ">
+                    </div>
+                    <div class="form-group">
+                        <label for="empresaCnpj">CNPJ</label>
+                        <input type="text" class="form-control" id="empresaCnpj" value="09.199.439/0001-60">
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Painel Moto -->
+            <div class="card mb-3">
+                <div class="card-header">Moto</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="motoModelo">Modelo da Moto</label>
+                        <input type="text" class="form-control" id="motoModelo" placeholder="Modelo da Moto">
+                    </div>
+                    <div class="form-group">
+                        <label for="motoChassi">Chassi</label>
+                        <input type="text" class="form-control" id="motoChassi" placeholder="Chassi da Moto">
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Painel Responsável -->
+            <div class="card mb-3">
+                <div class="card-header">Responsável</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="responsavelNome">Nome</label>
+                        <input type="text" class="form-control" id="responsavelNome" placeholder="Nome do Responsável">
+                    </div>
+                    <div class="form-group">
+                        <label for="responsavelCpf">CPF</label>
+                        <input type="text" class="form-control" id="responsavelCpf" placeholder="CPF do Responsável">
+                    </div>
+                    <div class="form-group">
+                        <label for="responsavelCpf">RG</label>
+                        <input type="text" class="form-control" id="responsavelRg" placeholder="RG do Responsável">
+                    </div>
+                    <div class="form-group">
+                        <label for="responsavelCpf">Endereço</label>
+                        <input type="text" class="form-control" id="responsavelEndereco" placeholder="Endereço do Responsável">
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Painel Recebedor -->
+            <div class="card mb-3">
+                <div class="card-header">Recebedor</div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="recebedorNome">Nome</label>
+                        <input type="text" class="form-control" id="recebedorNome" placeholder="Nome do Recebedor">
+                    </div>
+                    <div class="form-group">
+                        <label for="recebedorCpf">CPF</label>
+                        <input type="text" class="form-control" id="recebedorCpf" placeholder="CPF do Recebedor">
+                    </div>
+                    <div class="form-group">
+                        <label for="recebedorCpf">RG</label>
+                        <input type="text" class="form-control" id="recebedorRg" placeholder="RG do Recebedor">
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Botão para gerar PDF -->
+            <button type="button" class="btn btn-primary" id="gerar-pdf">Gerar PDF</button>
+        </form>
+    </div>
+</div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.0.2/cleave.min.js" integrity="sha512-SvgzybymTn9KvnNGu0HxXiGoNeOi0TTK7viiG0EGn2Qbeu/NFi3JdWrJs2JHiGA1Lph+dxiDv5F9gDlcgBzjfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
 <script>
-document.getElementById('gerar-pdf').addEventListener('click', () => {
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var inputMoeda = document.getElementById('valorMotoPix');
+    const idsDosCamposDeCpf = [
+        'responsavelCpfPix', 
+        'recebedorCpfPix', 
+        'responsavelCpf', 
+        'recebedorCpf'
+    ];
+
+    function formatarCPF(cpf) {
+        cpf = cpf.replace(/\D/g, '');
+        cpf = cpf.substring(0, 11);
+        cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+        cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        return cpf;
+    }
+
+    idsDosCamposDeCpf.forEach(function(id) {
+    const campo = document.getElementById(id);
+        if (campo) { // Verifica se o campo existe para evitar erros
+            campo.addEventListener('input', function(e) {
+                e.target.value = formatarCPF(e.target.value);
+            });
+        }
+    });
+
+    inputMoeda.addEventListener('keyup', function(event) {
+        var valor = event.target.value.replace(/\D/g, ''); // Remove tudo o que não é dígito
+        valor = (valor / 100).toFixed(2) + '';
+        valor = valor.replace(".", ",");
+        valor = valor.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+        valor = valor.replace(/(\d)(\d{3}),/g, "$1.$2,");
+        event.target.value = valor;
+    });
+});
+
+const recuperarUltimoFeito = () => {
+    const valor = localStorage.getItem('data');
+    const valorPix = localStorage.getItem('dataPix');
+
+    if(valor){
+        let data = JSON.parse(valor);
+        document.getElementById('empresaNome').value = data.empresaNome
+        document.getElementById('empresaCnpj').value = data.empresaCnpj
+        document.getElementById('motoModelo').value = data.motoModelo
+        document.getElementById('motoChassi').value = data.motoChassi
+        document.getElementById('responsavelNome').value = data.responsavelNome
+        document.getElementById('responsavelCpf').value = data.responsavelCpf
+        document.getElementById('recebedorNome').value = data.recebedorNome
+        document.getElementById('recebedorCpf').value = data.recebedorCpf
+        document.getElementById('responsavelRg').value = data.responsavelRg
+        document.getElementById('responsavelEndereco').value = data.responsavelEndereco
+        document.getElementById('recebedorRg').value = data.recebedorRg
+    }
+
+
+    if(valorPix)
+    {
+        let data = JSON.parse(valorPix);
+        document.getElementById('empresaNomePix').value = data.empresaNome
+        document.getElementById('empresaCnpjPix').value = data.empresaCnpj
+        document.getElementById('motoModeloPix').value = data.motoModelo
+        document.getElementById('motoChassiPix').value = data.motoChassi
+        document.getElementById('responsavelNomePix').value = data.responsavelNome
+        document.getElementById('responsavelCpfPix').value = data.responsavelCpf
+        document.getElementById('recebedorNomePix').value = data.recebedorNome
+        document.getElementById('recebedorCpfPix').value = data.recebedorCpf
+        document.getElementById('responsavelRgPix').value = data.responsavelRg
+        document.getElementById("valorMotoPix").value = data.valorMotoPix
+
+    }
+
+}
+
+
+
+const gerarDeclaracao = () => {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Aqui você pegaria os valores dos inputs para preencher no PDF
     const empresaNome = document.getElementById('empresaNome').value;
     const empresaCnpj = document.getElementById('empresaCnpj').value;
     const motoModelo = document.getElementById('motoModelo').value;
@@ -106,6 +287,22 @@ document.getElementById('gerar-pdf').addEventListener('click', () => {
     const responsavelRg = document.getElementById('responsavelRg').value;
     const responsavelEndereco = document.getElementById('responsavelEndereco').value;
     const recebedorRg = document.getElementById('recebedorRg').value;
+
+    let data = {
+        empresaNome,
+        empresaCnpj,
+        motoModelo,
+        motoChassi,
+        responsavelNome,
+        responsavelCpf,
+        recebedorNome,
+        recebedorCpf,
+        responsavelRg,
+        responsavelEndereco,
+        recebedorRg
+    }
+
+    localStorage.setItem("data", JSON.stringify(data));
     
     // JAPAN MOTOS-MATRIZ - Título
     doc.setFontSize(30); // Tamanho grande
@@ -128,7 +325,7 @@ document.getElementById('gerar-pdf').addEventListener('click', () => {
 
     // Texto principal - Justificado
     // OBS: jsPDF não suporta justificação direta. Você teria que implementar uma função personalizada para quebrar e alinhar o texto.
-    const textoCorpo = `Eu, ${responsavelNome}, CPF: ${responsavelCpf} e RG:${responsavelRg}, ${responsavelEndereco}, abaixo assinado na qualidade de proprietário da Motocicleta ${motoModelo}, CHASSI: ${motoChassi}. Por meio desta e para os devidos fins de direito autorizar ${recebedorNome}, CPF: ${recebedorCpf} e RG:${recebedorRg} a Receber junto a JAPAN MOTOS LTDA, a Motocicleta acima descriminada.`;
+    const textoCorpo = `Eu, ${responsavelNome}, CPF: ${responsavelCpf} e RG: ${responsavelRg}, ${responsavelEndereco}, abaixo assinado na qualidade de proprietário da Motocicleta ${motoModelo}, CHASSI: ${motoChassi}. Por meio desta e para os devidos fins de direito autorizar ${recebedorNome}, CPF: ${recebedorCpf} e RG: ${recebedorRg} a Receber junto a JAPAN MOTOS LTDA, a Motocicleta acima descriminada.`;
     doc.text(textoCorpo, 10, 80, { maxWidth: 190, align: 'justify' });
 
     const agora = new Date();
@@ -171,10 +368,94 @@ const dataFormatada = `TERESINA ${dia} DE ${mes} DE ${ano}`;
     let nomeArquivo = primeiroNome.toLowerCase() + "_autorizacao_recebimento_veiculo.pdf";
 
     doc.save(nomeArquivo);
+}
+
+const declaracaoPix = () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const empresaNome = document.getElementById('empresaNomePix').value;
+    const empresaCnpj = document.getElementById('empresaCnpjPix').value;
+    const motoModelo = document.getElementById('motoModeloPix').value;
+    const motoChassi = document.getElementById('motoChassiPix').value;
+    const responsavelNome = document.getElementById('responsavelNomePix').value;
+    const responsavelCpf = document.getElementById('responsavelCpfPix').value;
+    const recebedorNome = document.getElementById('recebedorNomePix').value;
+    const recebedorCpf = document.getElementById('recebedorCpfPix').value;
+    const responsavelRg = document.getElementById('responsavelRgPix').value;
+    const valorMotoPix = document.getElementById("valorMotoPix").value;
+    const valorextenso = extenso(document.getElementById("valorMotoPix").value, { mode: 'currency', locale: 'br', currency: { type: 'BRL' } }).toUpperCase();
+
+    let data = {
+        empresaNome,
+        empresaCnpj,
+        motoModelo,
+        motoChassi,
+        responsavelNome,
+        responsavelCpf,
+        recebedorNome,
+        recebedorCpf,
+        responsavelRg,
+        valorMotoPix
+    }
+
+
+    localStorage.setItem("dataPix", JSON.stringify(data));
+    // AUTORIZAÇÃO PARA RECEBIMENTO DE VEICULO - Seção
+    doc.setFontSize(14); // Tamanho
+    doc.setFont(undefined, 'bold'); // Negrito
+    doc.text('DECLARAÇÃO', 105, 70, null, null, 'center'); // Centralizado
+
+    // Resetando o estilo para o corpo do texto
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'normal');
+
+    // Texto principal - Justificado
+    // OBS: jsPDF não suporta justificação direta. Você teria que implementar uma função personalizada para quebrar e alinhar o texto.
+    const textoCorpo = `Declaro para os devidos fins que eu, ${responsavelNome}, CPF: ${responsavelCpf}, RG: ${responsavelRg} estou depositando na conta da ${empresaNome} CNPJ ${empresaCnpj}, BANCO SANTANDER, AGÊNCIA: 4744 C\C 13032654-7 ou via TED pixsantander@japanmotos.com.br, a importância de R$ ${valorMotoPix} ( ${valorextenso}.) referente à compra da motocicleta ${motoModelo} CHASSI ${motoChassi}, que será faturada e entregue para ${recebedorNome}, CPF: ${recebedorCpf}`;
+    doc.text(textoCorpo, 10, 80, { maxWidth: 190, align: 'justify' });
+
+    const agora = new Date();
+    const dia = agora.getDate(); // Já é uma string no formato desejado
+    const ano = agora.getFullYear();
+
+    // Função para converter o número do mês no nome por extenso
+    function nomeDoMes(mes) {
+        const meses = [
+            "JANEIRO", "FEVEREIRO", "MARÇO",
+            "ABRIL", "MAIO", "JUNHO",
+            "JULHO", "AGOSTO", "SETEMBRO",
+            "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
+        ];
+        return meses[mes];
+    }
+
+    const mes = nomeDoMes(agora.getMonth()); // Janeiro é 0, por isso não precisa adicionar 1 aqui
+
+    const dataFormatada = `TERESINA ${dia} DE ${mes} DE ${ano}`;
+
+    doc.text('___________________________________________________', 105, 170, null, null, 'center'); // Centralizado
+    doc.text(responsavelNome, 105, 180, null, null, 'center'); // Centralizado
+    doc.text(`CPF: ${responsavelCpf} RG: ${responsavelRg}`, 105, 185, null, null, 'center'); // Centralizado
+
+
+    let primeiroNome = responsavelNome.split(" ")[0];
+    let nomeArquivo = primeiroNome.toLowerCase() + "_declaracao_pix_ted.pdf";
+
+    doc.save(nomeArquivo);
+}
+
+document.getElementById('gerar-pdf').addEventListener('click', () => {
+  gerarDeclaracao();
+});
+
+document.getElementById('comprovante-pix').addEventListener('click', () => {
+  declaracaoPix();
 });
 </script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/extenso@2.0.1/dist/extenso.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
