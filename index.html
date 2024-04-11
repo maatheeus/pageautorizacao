@@ -434,6 +434,7 @@ const declaracaoPix = () => {
 
     const dataFormatada = `TERESINA ${dia} DE ${mes} DE ${ano}`;
 
+    doc.text(dataFormatada, 195, 140, null, null, 'right'); // Centralizado
     doc.text('___________________________________________________', 105, 170, null, null, 'center'); // Centralizado
     doc.text(responsavelNome, 105, 180, null, null, 'center'); // Centralizado
     doc.text(`CPF: ${responsavelCpf} RG: ${responsavelRg}`, 105, 185, null, null, 'center'); // Centralizado
